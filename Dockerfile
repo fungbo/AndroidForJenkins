@@ -34,4 +34,10 @@ RUN wget http://dl.google.com/android/${ANDROID_SDK_VERSION}.tgz && \
     tar -zxf ${ANDROID_SDK_VERSION}.tgz && \
     rm ${ANDROID_SDK_VERSION}.tgz && \
     chmod -R 775 ${ANDROID_HOME}
-RUN echo 'y' | android --silent update sdk --no-ui --force --all
+RUN expect -c ' \
+set timeout -1; \
+spawn android - update sdk --no-ui; \
+expect { \
+    "Do you accept the license" { exp_send "y\r" ; exp_continue } \
+    eof \
+} ' | android --silent update sdk --no-ui --force --all
