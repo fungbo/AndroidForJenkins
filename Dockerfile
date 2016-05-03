@@ -6,8 +6,9 @@ MAINTAINER bfeng@thoughtworks.com
 ENV REFRESHED_AT 2016_05_03
 
 # install wget
-RUN apt-get update -qq && apt-get upgrade -qqy
-RUN apt-get install -qqy wget
+RUN apt-get update -qq && \
+    apt-get upgrade -qqy && \
+    apt-get install -qqy wget
 
 # install Oracle Java
 RUN apt-get update -qq && \
@@ -29,12 +30,13 @@ RUN ln -s ${JAVA_HOME} /usr/lib/jvm/default-java
 
 # download Android SDK
 WORKDIR /opt
-RUN wget http://dl.google.com/android/${ANDROID_SDK_VERSION}.tgz
-RUN tar -zxf ${ANDROID_SDK_VERSION}.tgz
-RUN rm ${ANDROID_SDK_VERSION}.tgz
-RUN chmod -R 775 ${ANDROID_HOME}/
-RUN android update sdk --no-ui
+RUN wget http://dl.google.com/android/${ANDROID_SDK_VERSION}.tgz && \
+    tar -zxf ${ANDROID_SDK_VERSION}.tgz && \
+    rm ${ANDROID_SDK_VERSION}.tgz && \
+    chmod -R 775 ${ANDROID_HOME} && \
+    android update sdk --no-ui
 
 #install Gradle
-RUN apt-get update -qq && apt-get upgrade -qqy
-RUN apt-get install -qqy gradle
+RUN apt-get update -qq && \
+    apt-get upgrade -qqy && \
+    apt-get install -qqy gradle
