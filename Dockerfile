@@ -35,8 +35,3 @@ RUN wget http://dl.google.com/android/${ANDROID_SDK_VERSION}.tgz && \
     rm ${ANDROID_SDK_VERSION}.tgz && \
     chmod -R 775 ${ANDROID_HOME} && \
     android update sdk --no-ui
-
-#install Gradle
-RUN apt-get update -qq && \
-    apt-get upgrade -qqy && \
-    apt-get install -qqy gradle
