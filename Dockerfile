@@ -28,6 +28,11 @@ ENV PATH ${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools:$PATH
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 RUN ln -s ${JAVA_HOME} /usr/lib/jvm/default-java
 
+# install expect
+RUN apt-get update -qq && \
+    apt-get upgrade -qqy && \
+    apt-get install -qqy expect
+
 # download Android SDK
 WORKDIR /opt
 RUN wget http://dl.google.com/android/${ANDROID_SDK_VERSION}.tgz && \
