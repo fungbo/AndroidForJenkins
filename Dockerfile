@@ -34,4 +34,4 @@ RUN wget http://dl.google.com/android/${ANDROID_SDK_VERSION}.tgz && \
     tar -zxf ${ANDROID_SDK_VERSION}.tgz && \
     rm ${ANDROID_SDK_VERSION}.tgz && \
     chmod -R 775 ${ANDROID_HOME}
-RUN android update sdk --no-ui
+RUN android update sdk --no-ui --silent
