@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.bfeng.activityapp.MainActivity">
+
+    <EditText
+        android:id="@+id/msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/msg"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="sendExplicitIntent"
+                android:text="@string/explicit_btn" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="sendImplicitIntent"
+                android:text="@string/implicit_btn" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="dial"
+                android:text="@string/dial_btn" />
+        </LinearLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="sendMessage"
+            android:text="@string/send_msg_btn"/>
+
+        <fragment
+            android:id="@+id/a_fragment"
+            android:name="com.example.bfeng.activityapp.AFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <FrameLayout
+            android:id="@+id/container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </FrameLayout>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/change_fragment"
+            android:onClick="changeFragment"/>
+    </LinearLayout>
+</RelativeLayout>

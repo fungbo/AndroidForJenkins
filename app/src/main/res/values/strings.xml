@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">ActivityApp</string>
+    <string name="explicit_btn">Explicit</string>
+    <string name="implicit_btn">Implicit</string>
+    <string name="dial_btn">Dial</string>
+    <string name="call_btn">Call</string>
+    <string name="send_msg_btn">send message</string>
+    <string name="reply">reply</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="a_fragment">A_Fragment</string>
+    <string name="b_fragment">B_Fragment</string>
+    <string name="change_fragment">Change Fragment</string>
+    <string name="c_fragment">C_Fragment</string>
+    <string name="change_title">Change title</string>
+</resources>
