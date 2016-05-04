@@ -28,22 +28,11 @@ ENV PATH ${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools:$PATH
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 RUN ln -s ${JAVA_HOME} /usr/lib/jvm/default-java
 
-# install expect
-RUN apt-get update -qq && \
-    apt-get upgrade -qqy && \
-    apt-get install -qqy expect
-
 # download Android SDK
 WORKDIR /opt
 RUN wget http://dl.google.com/android/${ANDROID_SDK_VERSION}.tgz && \
     tar -zxf ${ANDROID_SDK_VERSION}.tgz && \
     rm ${ANDROID_SDK_VERSION}.tgz && \
     chmod -R 775 ${ANDROID_HOME}
-RUN expect -c '
-set timeout -1;
-spawn android - update sdk --no-ui;
-expect {
-    "Do you accept the license" { exp_send "y\r" ; exp_continue }
-    eof
-}
-'
+
+RUN ["opt/project/android-accept-licenses.sh", "android update sdk --all --force --no-ui --filter"]
