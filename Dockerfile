@@ -40,7 +40,6 @@ RUN wget http://dl.google.com/android/${ANDROID_SDK_VERSION}.tgz && \
     rm ${ANDROID_SDK_VERSION}.tgz && \
     chmod -R 775 ${ANDROID_HOME}
 
+COPY ./android-accept-licenses.sh /opt/project
 WORKDIR /opt/project
-RUN ["./android-accept-licenses.sh", "android update sdk --all --force --no-ui --filter"]
-
-CMD ["./gradlew buld"]
+RUN ["./android-accept-licenses.sh", "android update sdk --all --force --no-ui"]
