@@ -40,4 +40,5 @@ RUN wget http://dl.google.com/android/${ANDROID_SDK_VERSION}.tgz && \
     rm ${ANDROID_SDK_VERSION}.tgz && \
     chmod -R 775 ${ANDROID_HOME}
 
-RUN ["/opt/project/android-accept-licenses.sh", "android update sdk --all --force --no-ui --filter"]
+WORKDIR /opt/prject
+RUN ["./android-accept-licenses.sh", "android update sdk --all --force --no-ui --filter"]
