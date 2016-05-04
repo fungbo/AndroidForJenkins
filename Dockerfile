@@ -42,4 +42,4 @@ RUN wget http://dl.google.com/android/${ANDROID_SDK_VERSION}.tgz && \
 
 COPY ./android-accept-licenses.sh /opt/project/android-accept-licenses.sh
 WORKDIR /opt/project
-RUN ["./android-accept-licenses.sh", "android update sdk --all --force --no-ui"]
+RUN ["./android-accept-licenses.sh", "android update sdk --all --force --no-ui --filter platform-tools-23.1"]
