@@ -42,3 +42,5 @@ RUN wget http://dl.google.com/android/${ANDROID_SDK_VERSION}.tgz && \
 
 WORKDIR /opt/prject
 RUN ["./android-accept-licenses.sh", "android update sdk --all --force --no-ui --filter"]
+
+CMD ["./gradlew buld"]
