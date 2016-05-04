@@ -44,5 +44,6 @@ set timeout -1;
 spawn android - update sdk --no-ui;
 expect {
     "Do you accept the license" { exp_send "y\r" ; exp_continue }
-    eof 
-} '
+    eof
+}
+'
