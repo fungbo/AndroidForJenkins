@@ -5,10 +5,10 @@ FROM ubuntu:14.04
 MAINTAINER bfeng@thoughtworks.com
 ENV REFRESHED_AT 2016_05_03
 
-# install wget
+# install wget lib32z1 lib32stdc++6 expect
 RUN apt-get update -qq && \
     apt-get upgrade -qqy && \
-    apt-get install -qqy wget
+    apt-get install -qqy wget lib32stdc++6 lib32z1 expect
 
 # install Oracle Java
 RUN apt-get update -qq && \
@@ -28,11 +28,6 @@ ENV PATH ${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/bu
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 RUN ln -s ${JAVA_HOME} /usr/lib/jvm/default-java
 
-#install expect
-RUN apt-get update -qq && \
-    apt-get upgrade -qqy && \
-    apt-get install -qqy expect
-
 # download Android SDK
 WORKDIR /opt
 RUN wget http://dl.google.com/android/${ANDROID_SDK_VERSION}.tgz && \
@@ -43,7 +38,3 @@ RUN wget http://dl.google.com/android/${ANDROID_SDK_VERSION}.tgz && \
 COPY ./android-accept-licenses.sh /opt/project/android-accept-licenses.sh
 WORKDIR /opt/project
 RUN ["./android-accept-licenses.sh", "android update sdk --all --force --no-ui --filter platform-tools,tools,build-tools-23.0.3,android-23,addon-google_apis_x86-google-21,extra-android-support,extra-android-m2repository,extra-google-m2repository,extra-google-google_play_services,sys-img-armeabi-v7a-android-21"]
-
-RUN apt-get update -qq && \
-    apt-get upgrade -qqy && \
-    apt-get install -qqy lib32stdc++6 lib32z1
